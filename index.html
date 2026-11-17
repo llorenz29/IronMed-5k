@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IronMed 5K 2027</title>
+<meta name="description" content="The IronMed 5K is the HOYA Clinic's largest annual fundraiser. Run, donate, or sponsor to keep student-run health care free in Washington, D.C.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: classic race-site structure. Sticky navy bar, centered hero with a medallion,
+   letterspaced caps title, pill buttons, a facts row, then alternating light bands of
+   tag + heading + rounded cards. Georgetown blue and gray only, with white for the primary buttons on navy. */
+:root{
+  --navy:#041e42;        /* Georgetown blue */
+  --navy-2:#0b2d5c;
+  --accent:#b1b3b3;      /* Georgetown gray */
+  --accent-ink:#041e42;
+  --bg:#ffffff;
+  --bg-alt:#eef1f7;
+  --card:#ffffff;
+  --ink:#1a1a1a;
+  --muted:#5b6474;
+  --line:#dde2ec;
+  --on-navy:#ffffff;
+  --shadow:0 10px 30px rgba(4,30,66,.10);
+  --font:"Raleway",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0a1322; --bg-alt:#0e1a2e; --card:#13233d; --ink:#edf0f5; --muted:#a7b1c2; --line:#24375a;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0a1322; --bg-alt:#0e1a2e; --card:#13233d; --ink:#edf0f5; --muted:#a7b1c2; --line:#24375a;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:300;font-size:18px;line-height:1.65}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+h1,h2,h3{margin:0;font-weight:800;line-height:1.1;text-wrap:balance}
+p{margin:0}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(4,30,66,.97);color:var(--on-navy);border-bottom:2px solid var(--accent)}
+.nav .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-style:italic;letter-spacing:.06em;text-transform:uppercase;font-size:1.25rem;color:var(--accent)}
+.brand b{color:#fff;font-weight:900}
+.nav nav{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.nav nav a{text-decoration:none;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.nav nav a:not(.btn){padding:8px 14px;border-radius:6px;transition:background .15s,color .15s}
+.nav nav a:not(.btn):hover,.nav nav a:not(.btn):focus-visible{background:#fff;color:var(--navy)}
+.nav nav .btn{margin-left:8px}
+
+/* buttons */
+.btn{display:inline-block;text-decoration:none;font-weight:800;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;
+  padding:15px 32px;border-radius:50px;border:2px solid transparent;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+.btn-fill{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.btn-ghost{border-color:#fff;color:#fff}
+.hero .btn-fill,.nav .btn-fill,.panel .btn-fill{background:#fff;color:var(--navy)}
+.btn-navy{background:var(--navy);color:#fff}
+.nav .btn{padding:8px 20px;font-size:.8rem;box-shadow:none}
+
+/* hero */
+.hero{background:linear-gradient(180deg,rgba(4,30,66,.84) 0%,rgba(4,30,66,.72) 55%,rgba(4,30,66,.92) 100%),url(hero.jpg) center 35%/cover no-repeat var(--navy);color:var(--on-navy);text-align:center;padding:40px 0 0;position:relative;overflow:hidden}
+.medal{width:112px;height:112px;border-radius:50%;background:#f7f4ee;margin:0 auto 26px;display:grid;place-items:center;
+  box-shadow:0 0 0 3px rgba(255,255,255,.25),0 12px 30px rgba(0,0,0,.35)}
+.medal img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.eyebrow{font-weight:700;font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;opacity:.85}
+h1{font-size:clamp(2.6rem,9vw,5.2rem);font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin:14px 0 10px}
+.sub{font-weight:700;font-size:1rem}
+.dateline{font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:clamp(.9rem,2.4vw,1.1rem);margin-top:14px}
+.badge{display:inline-block;margin-top:16px;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:4px}
+.hero p.lead{max-width:36ch;margin:26px auto 0;font-size:1.2rem;color:rgba(255,255,255,.86)}
+@media (min-width:600px){.hero p.lead{max-width:52ch}}
+.cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px}
+.count-label{margin-top:44px;font-weight:700;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+.count{display:flex;justify-content:center;gap:clamp(18px,5vw,44px);margin-top:10px}
+.count b{display:block;font-weight:900;font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.1;font-variant-numeric:tabular-nums}
+.count span{font-weight:700;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
+.tentative{margin-top:10px;font-size:.8rem;opacity:.7}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;padding-bottom:26px;position:relative;z-index:1}
+.facts dt{font-style:italic;font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.facts dd{margin:6px 0 0;font-weight:700;font-size:1rem}
+.skyline{display:block;width:min(760px,96%);height:auto;margin:0 auto;fill:#fff;opacity:.07;position:absolute;left:50%;bottom:0;transform:translateX(-50%)}
+
+/* sections */
+section{padding:72px 0}
+.alt{background:var(--bg-alt)}
+.dark{background:var(--navy);color:#fff}
+.tag{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:7px 12px;border-radius:4px;margin-bottom:16px}
+h2{font-size:clamp(2rem,5vw,2.8rem)}
+h3{font-size:1.2rem}
+.intro{max-width:60ch;margin-top:16px;font-size:1.1rem;color:var(--muted)}
+.dark .intro{color:rgba(255,255,255,.82)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.card{background:var(--card);border-radius:16px;padding:30px 26px;box-shadow:var(--shadow);border-top:4px solid var(--navy-2);display:flex;flex-direction:column;gap:10px}
+.card p{color:var(--muted);font-size:1rem;flex:1}
+.card a{font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink)}
+.cards.four{grid-template-columns:repeat(4,1fr)}
+.big{font-weight:900;font-size:clamp(2.4rem,5vw,3.2rem);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+
+.dark .cards .card{background:rgba(255,255,255,.06);box-shadow:none;border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--accent)}
+.dark .card p{color:rgba(255,255,255,.8)}
+.dark .card a{color:var(--accent)}
+.step{font-style:italic;font-weight:800;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+.sponsors{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:40px 0 0;padding:0;list-style:none}
+.sponsors a,.sponsors span{display:grid;place-items:center;text-align:center;min-height:110px;padding:18px;background:var(--card);border-radius:16px;
+  box-shadow:var(--shadow);font-weight:800;font-size:1.15rem;text-decoration:none;color:var(--ink)}
+.sponsors a:hover{outline:2px solid var(--accent)}
+.past{margin-top:26px;color:var(--muted);font-size:.95rem}
+.panel{margin-top:44px;background:var(--navy);color:#fff;border-radius:16px;padding:34px 30px;display:flex;flex-wrap:wrap;gap:18px 36px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.panel p{color:rgba(255,255,255,.82);margin-top:8px;font-size:1rem;max-width:52ch}
+.email{font-weight:700;word-break:break-all;color:#fff}
+
+.split{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center}
+.stack{display:grid;gap:20px}
+.goes{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:12px;max-width:60ch}
+.goes li{padding-left:18px;border-left:4px solid var(--accent);color:var(--muted)}
+.goes strong{color:var(--ink);font-weight:800}
+
+footer{background:var(--navy);color:#fff;padding:56px 0 40px;font-size:.95rem;border-top:2px solid var(--accent)}
+footer .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px}
+footer h4{margin:0 0 10px;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer p{color:rgba(255,255,255,.78)}
+
+@media (max-width:900px){
+  .cards,.cards.four,.sponsors{grid-template-columns:repeat(2,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  section{padding:60px 0}
+  .cards,.cards.four,.sponsors{grid-template-columns:1fr}
+  .nav nav a:not(.btn){display:none}
+  h1{letter-spacing:.06em}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>IronMed</b> 5K</a>
+    <nav aria-label="Sections">
+      <a href="#mission">Mission</a>
+      <a href="#involved">Get involved</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-fill" data-link="donate" href="#">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="medal" id="medal">
+        <svg viewBox="0 0 48 48" width="92" height="92" role="img" aria-label="IronMed 5K"><circle cx="24" cy="24" r="22" fill="none" stroke="#041e42" stroke-width="1.5"/><path d="M10 26V20h4v-3h4v3h3V12l3-6 3 6v8h3v-3h4v3h4v6z" fill="#041e42"/><rect x="4" y="26" width="40" height="9" rx="1" fill="#b1b3b3"/><text x="24" y="33" text-anchor="middle" font-family="Raleway, sans-serif" font-weight="900" font-size="6.4" letter-spacing=".5" fill="#041e42">IRON MED</text></svg>
+      </div>
+      <div class="eyebrow">Run for a good cause</div>
+      <h1>IronMed 5K</h1>
+      <div class="dateline"><span data-text="editionOrdinal"></span> Annual | <span data-text="dateShort"></span></div>
+      <div class="badge" data-text="status"></div>
+      <p class="lead">HOYA Clinic's largest annual fundraiser: a community 5K on the Capital Crescent Trail, open to runners of all ages and experience levels.</p>
+      <div class="cta">
+        <a class="btn btn-fill" data-link="donate" href="#">Donate now</a>
+        <a class="btn btn-ghost" data-link="register" href="#">Register to run</a>
+      </div>
+      <div id="countdown">
+        <div class="count-label" id="count-label">Time until race day</div>
+        <div class="count" role="timer" aria-labelledby="count-label">
+          <div><b id="cd-d">0</b><span>Days</span></div>
+          <div><b id="cd-h">0</b><span>Hours</span></div>
+          <div><b id="cd-m">0</b><span>Minutes</span></div>
+          <div><b id="cd-s">0</b><span>Seconds</span></div>
+        </div>
+        <div class="tentative" data-text="dateNote"></div>
+      </div>
+      <dl class="facts">
+        <div><dt>Distance</dt><dd>5K (3.1 miles)</dd></div>
+        <div><dt>Race day</dt><dd data-text="date"></dd></div>
+        <div><dt>Start</dt><dd data-text="time"></dd></div>
+        <div><dt>Location</dt><dd data-text="place"></dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section id="mission">
+    <div class="wrap split">
+      <div>
+        <span class="tag">The mission</span>
+        <h2>About IronMed</h2>
+        <p class="intro">The IronMed 5K is HOYA Clinic's largest annual fundraiser, organized with the IronMed leadership team. It brings together medical students, faculty, alumni, health care professionals, and the wider D.C. community in support of the clinic's mission: providing free health care to underserved populations in Washington, D.C.</p>
+        <ul class="goes">
+          <li><strong>Free medical services</strong> for the clinic's patients.</li>
+          <li><strong>Community health fairs and outreach</strong> across the District.</li>
+          <li><strong>Partnerships</strong> that advance health equity in D.C.</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <div class="card"><div class="big">$12,000+</div><h3>Raised in 2026</h3><p>The most successful IronMed to date.</p></div>
+        <div class="card"><div class="big">Free</div><h3>Care at the HOYA Clinic</h3><p>Fundraising keeps the clinic's care free and strengthens its community partnerships.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="involved" class="dark">
+    <div class="wrap">
+      <span class="tag">Get involved</span>
+      <h2>Four ways to help</h2>
+      <div class="cards four">
+        <div class="card"><span class="step">Give</span><h3>Donate</h3><p>A gift through Georgetown's giving site goes straight to the clinic.</p><a data-link="donate" href="#">Give online</a></div>
+        <div class="card"><span class="step">Race</span><h3>Run or walk</h3><p>Sign up for the 5K. All paces are welcome.</p><a data-link="register" href="#">Registration</a></div>
+        <div class="card"><span class="step">Serve</span><h3>Volunteer</h3><p>Help with check-in, water stops, and the course on race morning.</p><a data-link="volunteer" href="#">Volunteer info</a></div>
+        <div class="card"><span class="step">Prepare</span><h3>Train with us</h3><p>New to the distance? Follow the IronMed training plan.</p><a data-link="training" href="#">Training plan</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sponsors" class="alt">
+    <div class="wrap">
+      <span class="tag">Our partners</span>
+      <h2>2027 sponsors</h2>
+      <ul class="sponsors" id="sponsor-list"></ul>
+      <p class="past" id="past-sponsors"></p>
+      <div class="panel">
+        <div>
+          <h3>Partner with IronMed</h3>
+          <p>Put your organization in front of runners, students, and faculty. Email us for options: <span class="email" data-text="email"></span></p>
+        </div>
+        <a class="btn btn-fill" data-link="emailSponsor" href="#">Email the team</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <h4>IronMed 5K</h4>
+      <p>Organized by Georgetown medical students to benefit the HOYA Clinic. Donations are processed by Georgetown University's official giving site.</p>
+    </div>
+    <div>
+      <h4>Links</h4>
+      <ul>
+        <li><a data-link="clinic" href="#">HOYA Clinic</a></li>
+        <li><a data-link="allSponsors" href="#">All sponsors</a></li>
+        <li><a data-link="instagram" href="#">Instagram @ironmed5k</a></li>
+        <li><a data-link="donate" href="#">Donate</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a data-link="email" href="#"><span data-text="email"></span></a></li>
+        <li>HOYA Clinic, Medical Dental Building</li>
+        <li>3900 Reservoir Road NW, Washington, DC</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ EDIT HERE ============
+   Everything that changes year to year lives in this block. */
+const SITE = {
+  edition: 28,
+  date: "April 17, 2027",
+  dateShort: "April 17, 2027",
+  dateNote: "Date is tentative until the permit is confirmed.", // set to "" once the date is final
+  raceStart: "2027-04-17T09:00:00-04:00", // countdown target (9:00 a.m. Eastern); set to "" to hide the countdown
+  status: "2027 registration coming soon",
+  time: "9:00 a.m.",
+  place: "Capital Crescent Trail, Washington, D.C.",
+  email: "georgetownironmed@gmail.com",
+  logo: "", // paste a data: URI of the real IronMed logo here to replace the drawn badge
+  links: {
+    donate:      "https://hoyasgive.georgetown.edu/campaigns/2026-hoya-clinic-ironmed-5k-campaign", // TODO: swap for 2027 campaign
+    register:    "https://meded.georgetown.edu/events/student-events/ironmed/ironmed-registration/", // TODO: swap for 2027 registration
+    volunteer:   "https://meded.georgetown.edu/events/student-events/ironmed/volunteers/",
+    training:    "https://meded.georgetown.edu/events/student-events/ironmed/training/",
+    allSponsors: "https://meded.georgetown.edu/events/student-events/ironmed/sponsors/",
+    clinic:      "https://hoyaclinic.som.georgetown.edu/",
+    instagram:   "https://www.instagram.com/ironmed5k/"
+  },
+  sponsors: [
+    { name: "BM&B", url: "https://www.bmbinc.com/services/commercial/healthcare/" },
+    { name: "Intellex", url: "https://intellex.com/expert-witness-litigation/practice-areas/medical-malpractice/" },
+    { name: "Garber Metrology", url: "https://www.garbermetrology.com/industries-we-serve/medical/" },
+    { name: "Center for Biological Diversity", url: "" },
+    { name: "Corewood Care", url: "https://corewoodcare.com/" },
+    { name: "KUBRA", url: "https://www.kubra.com/industries/healthcare" }
+  ],
+  pastSponsors: ["UPMC", "Foster Fuels", "National Time & Signal", "Eyemart Express", "Falafel Inc.", "AALEAD",
+                 "New Life Scientific", "IGX Solutions", "Watermark", "Medical Care Alert"]
+};
+/* =================================== */
+
+const ordinal = n => { const s = ["th","st","nd","rd"], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); };
+const text = { editionOrdinal: ordinal(SITE.edition), date: SITE.date, dateShort: SITE.dateShort, dateNote: SITE.dateNote, status: SITE.status,
+               time: SITE.time, place: SITE.place, email: SITE.email };
+document.querySelectorAll("[data-text]").forEach(el => { el.textContent = text[el.dataset.text]; });
+
+const links = Object.assign({}, SITE.links, {
+  email: "mailto:" + SITE.email,
+  emailSponsor: "mailto:" + SITE.email + "?subject=" + encodeURIComponent("IronMed 5K sponsorship")
+});
+document.querySelectorAll("[data-link]").forEach(a => {
+  a.href = links[a.dataset.link];
+  if (!a.href.startsWith("mailto:")) { a.target = "_blank"; a.rel = "noopener"; }
+});
+
+if (SITE.logo) {
+  const img = document.createElement("img");
+  img.src = SITE.logo; img.alt = "IronMed 5K logo";
+  document.getElementById("medal").replaceChildren(img);
+}
+
+(function countdown(){
+  const box = document.getElementById("countdown");
+  const target = SITE.raceStart ? new Date(SITE.raceStart).getTime() : NaN;
+  if (isNaN(target)) { box.hidden = true; return; }
+  const ids = ["cd-d","cd-h","cd-m","cd-s"].map(id => document.getElementById(id));
+  function tick(){
+    let s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    const v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
+    ids.forEach((el, i) => { el.textContent = v[i]; });
+    if (s === 0) document.getElementById("count-label").textContent = "Race day is here";
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+const list = document.getElementById("sponsor-list");
+SITE.sponsors.forEach(s => {
+  const li = document.createElement("li");
+  const el = document.createElement(s.url ? "a" : "span");
+  el.textContent = s.name;
+  if (s.url) { el.href = s.url; el.target = "_blank"; el.rel = "noopener"; }
+  li.appendChild(el); list.appendChild(li);
+});
+document.getElementById("past-sponsors").textContent = "With thanks to past sponsors: " + SITE.pastSponsors.join(", ") + ".";
+</script>
+</body>
+</html>
